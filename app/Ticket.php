@@ -9,7 +9,7 @@ class Ticket extends Model
     protected $fillable = ['operatingSystem', 'status', 'issue', 'description'];
 
     public function user(){
-        return $this->belongsTo('App\User', 'userEmail');
+        return $this->belongsTo('App\User', 'id');
     }
 
     public function comment(){

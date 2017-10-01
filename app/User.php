@@ -12,12 +12,12 @@ class User extends Authenticatable
 
     protected $fillable = ['firstName', 'lastName', 'email', 'isAdmin', 'password'];
     protected $hidden = ['password', 'remember_token'];
-    protected $primaryKey = 'email';
+    protected $primaryKey = 'id';
     public $incrementing = false;
 
     public function tickets()
     {
-        return $this->hasMany('Ticket');
+        return $this->hasMany('App\Ticket');
     }
 
 }

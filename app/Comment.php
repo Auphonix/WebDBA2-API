@@ -9,6 +9,7 @@ class Comment extends Model
     protected $fillable = ['userEmail','content'];
 
     public function ticket(){
-        return $this->belongsTo('App\Comment', 'ticketID');
+        return $this->belongsTo('App\Ticket', 'id');
     }
+
 }
