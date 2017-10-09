@@ -19,6 +19,7 @@ Route::group(['middleware' => 'cors'], function () {
     Route::get('user/list','UserController@index');
     Route::get('ticket/list','TicketController@index');
     Route::get('comment/list','CommentController@index');
+    Route::get('techUser/list','TechUserController@index');
 
 // Show
     Route::get('user/{id}', 'UserController@show');
@@ -40,4 +41,6 @@ Route::group(['middleware' => 'cors'], function () {
     Route::get('ticket/{id}/delete', 'TicketController@destroy');
     Route::get('comment/{id}/delete', 'CommentController@destroy');
 
+//  Unique
+    Route::post('techUser/findOrCreate', 'TechUserController@findOrCreate');
 });
