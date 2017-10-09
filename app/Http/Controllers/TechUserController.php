@@ -68,4 +68,15 @@ class TechUserController extends Controller
             return array("status" => "EXCEPTION ERROR");
         }
     }
+
+    public function tickets(Request $request, $id)
+    {
+        $techUser = TechUser::find($id);
+
+        $tickets = [];
+        foreach ($techUser->techTicketHandlers as $handler) {
+            array_push($tickets, $handler->ticket);
+        }
+        return $tickets;
+    }
 }

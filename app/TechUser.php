@@ -13,6 +13,6 @@ class TechUser extends Model
     }
 
     public function techTicketHandlers(){
-        return $this->hasMany('App\TechTicketHandler', 'id');
+        return $this->hasMany('App\TechTicketHandler', 'techUserID');
     }
 }

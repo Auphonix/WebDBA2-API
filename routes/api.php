@@ -45,4 +45,5 @@ Route::group(['middleware' => 'cors'], function () {
 //  Unique
     Route::post('techUser/findOrCreate', 'TechUserController@findOrCreate');
     Route::post('techUser/assignToTicket', 'TechUserController@assignToTicket');
+    Route::get('techUser/{id}/tickets', 'TechUserController@tickets');
 });
