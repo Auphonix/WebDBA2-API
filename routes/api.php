@@ -30,6 +30,7 @@ Route::group(['middleware' => 'cors'], function () {
     Route::post('user', 'UserController@store');
     Route::post('ticket', 'TicketController@store');
     Route::post('comment', 'CommentController@store');
+    Route::post('techTicketHandler', 'TechTicketHandlerController@store');
 
 // Update
     Route::post('user/{id}/update', 'UserController@update');
