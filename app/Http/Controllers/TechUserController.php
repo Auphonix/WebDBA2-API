@@ -55,7 +55,9 @@ class TechUserController extends Controller
             $ticket->escalationLevel = $data['escalationLevel'];
             $handler->ticketID = $ticket->id;
 
-            // TODO: Need to prevent saving the same TechTicketHandler multiple times
+            // Prevent saving the same TechTicketHandler multiple times
+            $ticket->techTicketHandler()->delete();
+            $ticket->techTicketHandler = $handler;
 
             // Save ticket and tech ticket handler
             if(!$handler->save() || !$ticket->save()){
