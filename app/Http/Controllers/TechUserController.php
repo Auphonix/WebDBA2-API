@@ -44,20 +44,19 @@ class TechUserController extends Controller
             // TODO: Doesn't use validation, very unsafe
             $data = $request->json()->all();
 
-            $handler = new TechTicketHandler();
-
-            // Set tech user and ticket
             $techUser = TechUser::find($data['techUserID']);
-            $handler->techUserID = $techUser->id;
-            // Update ticket with priority and escalation level
             $ticket = Ticket::find($data['ticketID']);
-            $ticket->priority = $data['priority'];
-            $ticket->escalationLevel = $data['escalationLevel'];
+
+            $handler = new TechTicketHandler();
+            $handler->techUserID = $techUser->id;
             $handler->ticketID = $ticket->id;
 
-            // Prevent saving the same TechTicketHandler multiple times
+            // Update ticket with priority and escalation level
+            $ticket->priority = $data['priority'];
+            $ticket->escalationLevel = $data['escalationLevel'];
+
+            // Remove previous handler
             $ticket->techTicketHandler()->delete();
-            $ticket->techTicketHandler = $handler;
 
             // Save ticket and tech ticket handler
             if(!$handler->save() || !$ticket->save()){
