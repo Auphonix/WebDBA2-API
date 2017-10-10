@@ -25,6 +25,7 @@ Route::group(['middleware' => 'cors'], function () {
     Route::get('user/{id}', 'UserController@show');
     Route::get('ticket/{id}', 'TicketController@show');
     Route::get('comment/{id}', 'CommentController@show');
+    Route::get('ticket/{id}/getComments', 'CommentController@getComments');
 
 // Store
     Route::post('user', 'UserController@store');

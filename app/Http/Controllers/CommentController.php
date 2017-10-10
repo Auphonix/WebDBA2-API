@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ticket;
 use Illuminate\Http\Request;
 
 use Exception;
@@ -112,5 +113,12 @@ class CommentController extends Controller
         }
 
         return array("status" => "SUCCESS");;
+    }
+
+    // Return all comments for a ticket
+    public function getComments($id)
+    {
+        $comments = Comment::with('ticket')->where('ticketID', $id)->get();
+        return $comments;
     }
 }

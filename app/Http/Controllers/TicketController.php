@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 
 use Exception;
@@ -25,7 +26,7 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,12 +42,10 @@ class TicketController extends Controller
 
             $saved = $ticket->save();
 
-            if(!$saved){
+            if (!$saved) {
                 return array("status" => "NO_SAVE ERROR");
             }
-        }
-
-        catch(Exception $e) {
+        } catch (Exception $e) {
             return array("status" => "EXCEPTION ERROR");
         }
 
@@ -56,20 +55,20 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($email)
     {
-        $ticket= Ticket::find($email);
+        $ticket = Ticket::find($email);
         return $ticket;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -84,11 +83,10 @@ class TicketController extends Controller
 
             $saved = $ticket->save();
 
-            if(!$saved){
+            if (!$saved) {
                 return array("status" => "NO_SAVE ERROR");
             }
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             return array("status" => "EXCEPTION ERROR");
         }
 
@@ -98,7 +96,7 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -110,8 +108,7 @@ class TicketController extends Controller
             } else {
                 return array("status" => "ERROR");
             }
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             return array("status" => "EXCEPTION ERROR");
         }
 
