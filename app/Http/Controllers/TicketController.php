@@ -18,7 +18,7 @@ class TicketController extends Controller
      */
     public function index(Request $request)
     {
-        $tickets= Ticket::all();
+        $tickets = Ticket::with('techTicketHandler.techUser')->get();
         return $tickets;
     }
 
