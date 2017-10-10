@@ -9,7 +9,7 @@ class TechUser extends Model
     protected $fillable = ['firebaseId', 'firebaseName'];
 
     public function comments(){
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment', 'techUserID');
     }
 
     public function techTicketHandlers(){
